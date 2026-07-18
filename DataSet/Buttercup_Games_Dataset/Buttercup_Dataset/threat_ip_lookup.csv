@@ -1,0 +1,5 @@
+src_ip,threat_type,severity
+203.0.113.7,brute_force,high
+198.51.100.22,scanner,medium
+203.0.113.99,c2,critical
+192.0.2.44,tor_exit,low

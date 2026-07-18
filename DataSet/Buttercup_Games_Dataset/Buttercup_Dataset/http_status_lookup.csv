@@ -1,0 +1,11 @@
+status,status_description,status_type
+200,OK,Success
+206,Partial Content,Success
+301,Moved Permanently,Redirect
+304,Not Modified,Redirect
+400,Bad Request,Client Error
+403,Forbidden,Client Error
+404,Not Found,Client Error
+500,Internal Server Error,Server Error
+502,Bad Gateway,Server Error
+503,Service Unavailable,Server Error
