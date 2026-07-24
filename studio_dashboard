@@ -1,0 +1,332 @@
+{
+    "title": "vk_studio_dashboard",
+    "description": "",
+    "inputs": {
+        "input_2BDqtVOq": {
+            "dataSources": {
+                "primary": "ds_R0DoS7Hw"
+            },
+            "options": {
+                "defaultValue": "*",
+                "items": [
+                    {
+                        "label": "All",
+                        "value": "*"
+                    }
+                ],
+                "token": "category_id"
+            },
+            "title": "Category ID",
+            "type": "input.dropdown"
+        },
+        "input_GSbfmiYo": {
+            "options": {
+                "defaultValue": 200,
+                "max": 600,
+                "min": 200,
+                "step": 10,
+                "token": "status"
+            },
+            "title": "status",
+            "type": "input.number"
+        },
+        "input_QkDl4QIf": {
+            "dataSources": {
+                "primary": "ds_tir58Ixz"
+            },
+            "options": {
+                "defaultValue": [
+                    "*"
+                ],
+                "items": [
+                    {
+                        "label": "All",
+                        "value": "*"
+                    }
+                ],
+                "token": "pid"
+            },
+            "title": "Product ID",
+            "type": "input.multiselect"
+        },
+        "input_cTdZPnTg": {
+            "eventHandlers": [
+                {
+                    "options": {
+                        "app": "stackmaster_buttercup",
+                        "newTab": true,
+                        "report": "vk_report"
+                    },
+                    "type": "drilldown.linkToReport"
+                }
+            ],
+            "options": {
+                "appearance": "primary",
+                "label": "Submit"
+            },
+            "type": "input.button"
+        },
+        "input_global_trp": {
+            "options": {
+                "defaultValue": "-7d@h,now",
+                "token": "global_time"
+            },
+            "title": "Time Range",
+            "type": "input.timerange"
+        },
+        "input_wDcsIxL3": {
+            "options": {
+                "defaultValue": "web",
+                "token": "idx"
+            },
+            "title": "Index",
+            "type": "input.text"
+        }
+    },
+    "defaults": {
+        "dataSources": {
+            "ds.search": {
+                "options": {
+                    "queryParameters": {
+                        "earliest": "$global_time.earliest$",
+                        "latest": "$global_time.latest$"
+                    }
+                }
+            },
+            "ds.spl2": {
+                "options": {
+                    "queryParameters": {
+                        "earliest": "$global_time.earliest$",
+                        "latest": "$global_time.latest$"
+                    }
+                }
+            }
+        },
+        "visualizations": {
+            "global": {
+                "showProgressBar": true
+            }
+        }
+    },
+    "visualizations": {
+        "viz_X8waOKJ1": {
+            "containerOptions": {
+                "title": {
+                    "color": "#dc4e41"
+                },
+                "visibility": {
+                    "hideWhenNoData": true
+                }
+            },
+            "cornerRadius": [
+                4,
+                4,
+                0,
+                0
+            ],
+            "dataSources": {
+                "primary": "ds_U9UM30go"
+            },
+            "eventHandlers": [
+                {
+                    "options": {
+                        "app": "stackmaster_buttercup",
+                        "dashboard": "raga_studio_dashboard",
+                        "newTab": true,
+                        "tokens": [
+                            {
+                                "token": "tok1",
+                                "value": "name"
+                            },
+                            {
+                                "token": "tok2",
+                                "value": "value"
+                            }
+                        ]
+                    },
+                    "type": "drilldown.linkToDashboard"
+                },
+                {
+                    "options": {
+                        "tabId": "layout_yx7U92fR"
+                    },
+                    "type": "drilldown.switchToTab"
+                },
+                {
+                    "options": {
+                        "tokens": [
+                            {
+                                "key": "name",
+                                "token": "tok1"
+                            }
+                        ]
+                    },
+                    "type": "drilldown.setToken"
+                }
+            ],
+            "options": {
+                "additionalTooltipFields": [],
+                "backgroundColor": "#ffffff",
+                "dataValuesDisplay": "all",
+                "legendDisplay": "top",
+                "legendTruncation": "ellipsisMiddle",
+                "showYAxisWithZero": true,
+                "stackMode": "stacked",
+                "trellisSplitBy": "productId",
+                "xAxisLabelRotation": -45,
+                "xAxisMajorTickSize": 7,
+                "xAxisTitleText": "Category ID",
+                "y": "> primary | frameBySeriesNames('DB-SG-G01','FS-SG-G03','SG-G01','WC-SH-A02','WC-SH-T02')",
+                "y2": "> primary | frameBySeriesNames('')",
+                "yAxisLineVisibility": "show",
+                "yAxisTitleText": "Count"
+            },
+            "showLastUpdated": false,
+            "showProgressBar": true,
+            "title": "Count of CategoryId By ProductId",
+            "type": "splunk.column"
+        },
+        "viz_fxi4HN4u": {
+            "dataSources": {
+                "primary": "ds_nhBlyJXG"
+            },
+            "options": {
+                "dataValuesDisplay": "off",
+                "legendDisplay": "right",
+                "legendMode": "standard",
+                "legendTruncation": "ellipsisMiddle",
+                "lineWidth": 2,
+                "nullValueDisplay": "gaps",
+                "showIndependentYRanges": false,
+                "showOverlayY2Axis": false,
+                "showRoundedY2AxisLabels": false,
+                "showSplitSeries": false,
+                "showY2MajorGridLines": true,
+                "xAxisLabelRotation": 0,
+                "xAxisTitleVisibility": "show",
+                "y2AxisAbbreviation": "auto",
+                "y2AxisScale": "linear",
+                "y2AxisTitleVisibility": "show",
+                "yAxisAbbreviation": "auto",
+                "yAxisScale": "linear",
+                "yAxisTitleVisibility": "show"
+            },
+            "title": "Count By hits and Visitors - $tok1$",
+            "type": "splunk.line"
+        }
+    },
+    "dataSources": {
+        "ds_R0DoS7Hw": {
+            "name": "category_filter",
+            "options": {
+                "query": "index=web action=purchase \n|  stats count by categoryId",
+                "queryParameters": {
+                    "earliest": "$global_time.earliest$",
+                    "latest": "$global_time.latest$"
+                }
+            },
+            "type": "ds.search"
+        },
+        "ds_U9UM30go": {
+            "name": "Count of CategoryId and ProductId - Table search",
+            "options": {
+                "query": "index=$idx$ status=$status$\n| stats count by categoryId, productId\n|sort count\n|head 5\n| chart values(count) OVER categoryId BY productId\n| fillnull",
+                "queryParameters": {
+                    "earliest": "$global_time.earliest$",
+                    "latest": "$global_time.latest$",
+                    "sampleRatio": 1
+                }
+            },
+            "type": "ds.search"
+        },
+        "ds_nhBlyJXG": {
+            "name": "Count By hits and Visitors search",
+            "options": {
+                "query": "index=web action=purchase categoryId=$category_id$ productId IN ($pid$,$tok1$) \n| timechart span=1H count AS hits, dc(clientip) AS visitors",
+                "queryParameters": {
+                    "earliest": "$global_time.earliest$",
+                    "latest": "$global_time.latest$",
+                    "sampleRatio": 1
+                }
+            },
+            "type": "ds.search"
+        },
+        "ds_tir58Ixz": {
+            "name": "pid_filter",
+            "options": {
+                "query": "index=web action=purchase \n| stats count by productId",
+                "queryParameters": {
+                    "earliest": "$global_time.earliest$",
+                    "latest": "$global_time.latest$"
+                }
+            },
+            "type": "ds.search"
+        }
+    },
+    "layout": {
+        "globalInputs": [
+            "input_global_trp",
+            "input_2BDqtVOq",
+            "input_QkDl4QIf",
+            "input_wDcsIxL3",
+            "input_GSbfmiYo",
+            "input_cTdZPnTg"
+        ],
+        "layoutDefinitions": {
+            "layout_1": {
+                "options": {
+                    "backgroundColor": "#ffffff",
+                    "height": 960,
+                    "width": 1440
+                },
+                "structure": [
+                    {
+                        "item": "viz_X8waOKJ1",
+                        "position": {
+                            "h": 296,
+                            "w": 790,
+                            "x": 0,
+                            "y": 0
+                        },
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_fxi4HN4u",
+                        "position": {
+                            "h": 300,
+                            "w": 640,
+                            "x": 800,
+                            "y": 0
+                        },
+                        "type": "block"
+                    }
+                ],
+                "type": "absolute"
+            },
+            "layout_yx7U92fR": {
+                "options": {
+                    "width": 1440
+                },
+                "structure": [],
+                "type": "grid"
+            }
+        },
+        "options": {},
+        "tabs": {
+            "items": [
+                {
+                    "label": "Test",
+                    "layoutId": "layout_1"
+                },
+                {
+                    "label": "New tab",
+                    "layoutId": "layout_yx7U92fR"
+                }
+            ]
+        }
+    },
+    "applicationProperties": {
+        "hideEdit": false,
+        "hideExport": false
+    }
+}
